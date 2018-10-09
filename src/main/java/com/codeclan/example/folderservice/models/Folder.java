@@ -21,25 +21,7 @@ public class Folder {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToMany
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "folders_files",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "folder_id",
-                            nullable = false,
-                            updatable = false
-                    )
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "file_id",
-                            nullable = false,
-                            updatable = false
-                )
-            }
-    )
+    @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
     private List<File> files;
 
     public Folder(String title, User user) {
