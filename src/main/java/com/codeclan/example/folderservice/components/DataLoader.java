@@ -1,7 +1,9 @@
 package com.codeclan.example.folderservice.components;
 
+import com.codeclan.example.folderservice.models.File;
 import com.codeclan.example.folderservice.models.Folder;
 import com.codeclan.example.folderservice.models.User;
+import com.codeclan.example.folderservice.repository.FileRepository;
 import com.codeclan.example.folderservice.repository.FolderRepository;
 import com.codeclan.example.folderservice.repository.UserRepository;
 import javafx.application.Application;
@@ -19,6 +21,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     FolderRepository folderRepository;
 
+    @Autowired
+    FileRepository fileRepository;
+
     public DataLoader(){
     }
 
@@ -29,5 +34,8 @@ public class DataLoader implements ApplicationRunner {
 
         Folder folder1 = new Folder("The Matrix", user1);
         folderRepository.save(folder1);
+
+        File file1 = new File("Mr Anderson", ".txt", 42);
+        fileRepository.save(file1);
     }
 }
