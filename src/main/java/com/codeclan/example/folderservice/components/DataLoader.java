@@ -35,7 +35,7 @@ public class DataLoader implements ApplicationRunner {
         Folder folder1 = new Folder("The Matrix", user1);
         folderRepository.save(folder1);
 
-        File file1 = new File("Mr Anderson", ".txt", 42);
+        File file1 = new File("Mr Anderson", ".txt", 42, folder1);
         fileRepository.save(file1);
     }
 }
